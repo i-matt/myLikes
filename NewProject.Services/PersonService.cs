@@ -40,6 +40,33 @@ namespace NewProject.Services
             return result;
         }
 
+        //public int Update(PersonUpdateRequest model)
+        //{
+        //    int result = 0;
+        //    using (SqlConnection conn = new SqlConnection(connStr))
+        //    {
+        //        string cmdText = "Person_Update";
+        //        using (SqlCommand cmd = new SqlCommand(cmdText, conn))
+        //        {
+        //            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+        //            SqlParameter param = new SqlParameter();
+
+        //            cmd.Parameters.Add(param);
+        //            cmd.Parameters.AddWithValue("@AccountId", model.AccountId);
+        //            cmd.Parameters.AddWithValue("@Username", model.Username);
+        //            cmd.Parameters.AddWithValue("@PhotoId", model.PhotoId);
+        //            cmd.Parameters.AddWithValue("@Gender", model.Gender);
+        //            cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
+
+        //            conn.Open();
+        //            cmd.ExecuteNonQuery();
+        //            result = (int)cmd.Parameters["@Id"].Value;
+        //            conn.Close();
+        //        }
+        //    }
+        //    return result;
+        //}
+
         public List<Person> GetAll()
         {
             List<Person> result = new List<Person>();
