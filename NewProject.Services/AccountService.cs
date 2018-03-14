@@ -63,6 +63,22 @@ namespace NewProject.Services
             }
         }
 
+        public void Delete(int id)
+        {
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                string cmdText = "Accounts_Delete";
+                using(SqlCommand cmd = new SqlCommand(cmdText, conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    conn.Open();
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                }
+            }
+        }
+
         public List<Account> GetAll()
         {
             List <Account> result = new List<Account>();
@@ -78,6 +94,7 @@ namespace NewProject.Services
                     {
                         Account model = new Account();
                         int index = 0;
+                        model.Id = reader.GetInt32(index++);
                         model.Email = reader.GetString(index++);
                         model.CreatedDate = reader.GetDateTime(index++);
                         model.ModifiedDate = reader.GetDateTime(index++);
@@ -88,6 +105,33 @@ namespace NewProject.Services
                 }
             }
             return result;
+        }
+
+        public Account GetById(int id)
+        {
+            Account model = new Account();
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                string cmdText = "Accounts_SelectById";
+                using (SqlCommand cmd = new SqlCommand(cmdText, conn))
+                {
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@Id", id);
+                    conn.Open();
+                    SqlDataReader reader = cmd.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                    while (reader.Read())
+                    {
+                        int index = 0;
+                        model.Id = reader.GetInt32(index++);
+                        model.Email = reader.GetString(index++);
+                        model.CreatedDate = reader.GetDateTime(index++);
+                        model.ModifiedDate = reader.GetDateTime(index++);
+                        model.ModifiedBy = reader.GetString(index);
+                    }
+                    conn.Close();
+                }
+            }
+            return model;
         }
     }
 }

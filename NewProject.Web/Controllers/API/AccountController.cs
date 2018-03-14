@@ -24,26 +24,26 @@ namespace NewProject.Web.Controllers.API
         }
 
         // POST api/<controller>
-        public int Post(AccountAddRequest model)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    model.ModifiedBy = "me";
-                    AccountService svc = new AccountService();
+        //public int Post(AccountAddRequest model)
+        //{
+        //    try
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+        //            model.ModifiedBy = "me";
+        //            AccountService svc = new AccountService();
                    
-                }
-                else
-                {
-                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-                }
-            }
-            catch (Exception ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
-            }
-        }
+        //        }
+        //        else
+        //        {
+        //            return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message);
+        //    }
+        //}
 
         // PUT api/<controller>/5
         public void Put(int id, [FromBody]string value)

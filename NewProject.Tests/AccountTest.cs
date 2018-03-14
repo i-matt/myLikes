@@ -36,8 +36,16 @@ namespace NewProject.Tests
 
             AccountService svc = new AccountService();
             int result = svc.Insert(model);
+            Assert.IsTrue(result > 0, "Insert failed!");
+        }
 
-            Assert.IsTrue(result > 0, "The insert failed!");
+        [TestMethod]
+        public void Delete_Test()
+        {
+            AccountService svc = new AccountService();
+            svc.Delete(6);
+            Account result = svc.GetById(6);
+            Assert.IsTrue(result.Id== 0, "Delete has failed");
         }
 
         [TestMethod]
@@ -46,6 +54,14 @@ namespace NewProject.Tests
             AccountService svc = new AccountService();
             List<Account> result = svc.GetAll();
             Assert.IsTrue(result.Count > 0, "Select All has failed");
+        }
+
+        [TestMethod]
+        public void SelectById_Test()
+        {
+            AccountService svc = new AccountService();
+            Account result = svc.GetById(4);
+            Assert.IsTrue(result.Id > 0, "Select By Id has failed");
         }
     }
 }
