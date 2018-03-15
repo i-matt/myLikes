@@ -1,12 +1,8 @@
 ﻿using NewProject.Models.Domain;
 using NewProject.Models.Requests;
-using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NewProject.Services
 {
@@ -20,7 +16,7 @@ namespace NewProject.Services
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 string cmdText = "Accounts_Insert";
-                using(SqlCommand cmd = new SqlCommand(cmdText, conn))
+                using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     SqlParameter param = new SqlParameter();
@@ -49,13 +45,9 @@ namespace NewProject.Services
                 using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
-                    SqlParameter param = new SqlParameter();
-
-                    cmd.Parameters.Add(param);
                     cmd.Parameters.AddWithValue("@Id", model.Id);
                     cmd.Parameters.AddWithValue("@Email", model.Email);
                     cmd.Parameters.AddWithValue("@ModifiedBy", model.ModifiedBy);
-
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     conn.Close();
@@ -68,7 +60,7 @@ namespace NewProject.Services
             using (SqlConnection conn = new SqlConnection(connStr))
             {
                 string cmdText = "Accounts_Delete";
-                using(SqlCommand cmd = new SqlCommand(cmdText, conn))
+                using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.Parameters.AddWithValue("@Id", id);
@@ -81,11 +73,11 @@ namespace NewProject.Services
 
         public List<Account> GetAll()
         {
-            List <Account> result = new List<Account>();
-            using(SqlConnection conn = new SqlConnection(connStr))
+            List<Account> result = new List<Account>();
+            using (SqlConnection conn = new SqlConnection(connStr))
             {
                 string cmdText = "Accounts_SelectAll";
-                using(SqlCommand cmd = new SqlCommand(cmdText, conn))
+                using (SqlCommand cmd = new SqlCommand(cmdText, conn))
                 {
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     conn.Open();
