@@ -1,0 +1,32 @@
+import React from 'react';
+import {Link} from 'react-router-dom';
+import Footer from '../Components/footer';
+import Header from '../Components/header';
+
+class Login extends React.Component{
+    render() {
+        return (
+          <div className="App">
+            <Header/>
+            <div className="col-md-3"/>
+            <form className="form-signin container col-md-6">
+              <h2 className="form-signin-heading">Please log in</h2>
+              <hr/>
+              <label className="sr-only">Email address</label>
+              <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus/>
+              <br/>
+              <label className="sr-only">Password</label>
+              <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>
+              <br/>
+              <button className="btn btn-primary btn-block" type="submit">Log in</button>
+              <hr/>
+              <Link to ="/termsAndConditions"><em>Terms and Conditions </em></Link>
+               | 
+              <Link to="/register"> Register</Link>
+            </form>
+            <Footer/>
+          </div>
+        );
+      }
+}
+export default Login;

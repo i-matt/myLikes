@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewProject.Models.Domain;
 using NewProject.Models.Requests;
+using NewProject.Models.Response;
 using NewProject.Services;
 using System.Collections.Generic;
 
@@ -21,7 +22,7 @@ namespace NewProject.Tests
             AccountService svc = new AccountService();
             int result = svc.Insert(model);
 
-            Assert.IsTrue(result > 0, "The insert failed!");
+            Assert.IsTrue(result > 0, "Insert failed!");
         }
 
         [TestMethod]
@@ -35,8 +36,8 @@ namespace NewProject.Tests
             };
 
             AccountService svc = new AccountService();
-            int result = svc.Insert(model);
-            Assert.IsTrue(result > 0, "Insert failed!");
+            svc.Update(model);
+            Assert.IsTrue(model.Id > 0, "Update failed!");
         }
 
         [TestMethod]
