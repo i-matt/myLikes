@@ -9,7 +9,7 @@ import Donations from '../src/Views/Donations';
 
 const Routes = () => (
     <Router>
-        <div>
+        <div id="topDiv">
             <Switch>
                 <Route path="/login" component={Login}/>
                 <Route path="/register" component={Register} />
