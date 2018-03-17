@@ -13,10 +13,13 @@ class Register extends React.Component{
               <h2 className="form-signin-heading">Register an Account</h2>
               <hr/>
               <label className="sr-only">Email address</label>
-              <input type="email" id="inputEmail" className="form-control" placeholder="Email address" required autoFocus/>
+              <input type="email" id="inputREmail" className="form-control" placeholder="Email address" required autoFocus/>
               <br/>
               <label className="sr-only">Password</label>
-              <input type="password" id="inputPassword" className="form-control" placeholder="Password" required/>
+              <input type="password" id="inputRPassword" className="form-control" placeholder="Password" required/>
+              <br/>
+              <label className="sr-only">Password</label>
+              <input type="password" id="confirmRPassword" className="form-control" placeholder="Confirm password" required/>
               <br/>
               <button className="btn btn-primary btn-block" type="submit">Register</button>
               <hr/>
